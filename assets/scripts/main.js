@@ -38,6 +38,8 @@ let modalTitle = document.getElementById("modal-title")
 let restartBtn = document.querySelector('.restart')
 let backToMenuBtn = document.querySelector('.to-menu')
 
+
+
 let playerNames = []
 let playerSymbols = []
 let playerPriorities = []
@@ -49,9 +51,11 @@ playBtn.addEventListener("click", () => {
     header.style.gap = '5px'
     titleLogo.style.display = 'none'
     let img = document.querySelectorAll('.img-node')
+    
     for(let i = 0; i < node.length; i++)
     {
-        node[i].removeChild(img[i])
+        if(node[i].getElementsByTagName('img').length > 0)
+            node[i].removeChild(img[i])
     }
     optionsBlock.style.display = 'flex'
 })
@@ -116,16 +120,30 @@ function startGame(game){
             {
                 if(counter % 2 == 0){
                     whoseMoveTitle.innerHTML = 'Player ' + second.name + ' move' 
-                    if(first.symbol == 'tic')
-                        node[i].innerHTML =  "<img class='img-node' src='assets/res/tic.svg' />"
-                    else node[i].innerHTML = "<img class='img-node' src='assets/res/tac.svg' />"
+                    if(first.symbol == 'tic'){
+                        let ticOrTacDiv = document.createElement('div')
+                        ticOrTacDiv.innerHTML = "<img class='img-node' src='assets/res/tic.svg' />"
+                        node[i].appendChild(ticOrTacDiv.firstChild)
+                    }
+                    else{
+                        let ticOrTacDiv = document.createElement('div')
+                        ticOrTacDiv.innerHTML = "<img class='img-node' src='assets/res/tac.svg' />"
+                        node[i].appendChild(ticOrTacDiv.firstChild)
+                    }
                     hash = game.updateHash(hash, i, 'first')
                 }
                 else{
                     whoseMoveTitle.innerHTML = 'Player ' + first.name + ' move' 
-                    if(second.symbol == 'tic')
-                        node[i].innerHTML =  "<img class='img-node' src='assets/res/tic.svg' />"
-                    else node[i].innerHTML = "<img class='img-node' src='assets/res/tac.svg' />"
+                    if(second.symbol == 'tic'){
+                        let ticOrTacDiv = document.createElement('div')
+                        ticOrTacDiv.innerHTML = "<img class='img-node' src='assets/res/tic.svg' />"
+                        node[i].appendChild(ticOrTacDiv.firstChild)
+                    }
+                    else{
+                        let ticOrTacDiv = document.createElement('div')
+                        ticOrTacDiv.innerHTML = "<img class='img-node' src='assets/res/tac.svg' />"
+                        node[i].appendChild(ticOrTacDiv.firstChild)
+                    }
                     hash = game.updateHash(hash, i, 'second')
                 } 
                 counter++;
@@ -146,7 +164,7 @@ function cleanGametoRestart(){
     let img = document.querySelectorAll('.img-node')
     for(let i = 0; i < node.length; i++)
     {
-        if(node[i].getElementsByTagName('img').length == 1)
+        if(node[i].getElementsByTagName('img').length > 0)
             node[i].removeChild(img[i])
     }
 }
