@@ -18,7 +18,7 @@ let playBtn = document.querySelector('.switch-btn')
 let header = document.querySelector('.container-header')
 let logo = document.querySelector('.logo')
 let titleLogo = document.querySelector('.title-logo')
-let node = document.querySelectorAll('.node')
+
 
 let optionsBlock = document.querySelector('.options-game')
 let setOptionsBtn = document.getElementById("setBtn")
@@ -50,12 +50,17 @@ playBtn.addEventListener("click", () => {
     header.style.padding = '8px'
     header.style.gap = '5px'
     titleLogo.style.display = 'none'
-    let img = document.querySelectorAll('.img-node')
-    
-    for(let i = 0; i < node.length; i++)
+    let gameZone = document.querySelector('.gamezone')
+    let hashZone = document.querySelector('.hash')
+    gameZone.removeChild(hashZone)   
+    let newHashZone = document.createElement('div')
+    newHashZone.classList.add('hash') 
+    gameZone.appendChild(newHashZone)
+    for( let i = 0; i < 9; i++)
     {
-        if(node[i].getElementsByTagName('img').length > 0)
-            node[i].removeChild(img[i])
+        let newNode = document.createElement('div')
+        newNode.classList.add('node')
+        newHashZone.appendChild(newNode)
     }
     optionsBlock.style.display = 'flex'
 })
@@ -112,6 +117,7 @@ function startGame(game){
         second = game.firstPlayer
         whoseMoveTitle.innerHTML = 'Player ' + first.name + ' move' 
     }
+    let node = document.querySelectorAll('.node')
     for(let i = 0; i < node.length; i++)
     {
 
@@ -161,11 +167,17 @@ function cleanGametoRestart(){
             hash[i][j] = 0;
         }
     }
-    let img = document.querySelectorAll('.img-node')
-    for(let i = 0; i < node.length; i++)
+    let gameZone = document.querySelector('.gamezone')
+    let hashZone = document.querySelector('.hash')
+    gameZone.removeChild(hashZone)   
+    let newHashZone = document.createElement('div')
+    newHashZone.classList.add('hash') 
+    gameZone.appendChild(newHashZone)
+    for( let i = 0; i < 9; i++)
     {
-        if(node[i].getElementsByTagName('img').length > 0)
-            node[i].removeChild(img[i])
+        let newNode = document.createElement('div')
+        newNode.classList.add('node')
+        newHashZone.appendChild(newNode)
     }
 }
 
