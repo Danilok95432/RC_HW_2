@@ -6,96 +6,98 @@
     <title>Document</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
-    <header>
-        <section class="container-header">
-            <div class="logo">
-                <img src="assets/res/tic-tac-toe-svgrepo-com.svg" alt="">
+<body>  
+        <header>
+            <section class="container-header">
+                <div class="logo">
+                    <img src="assets/res/tic-tac-toe-svgrepo-com.svg" alt="">
+                </div>
+                <h1 class="title-logo">Tic-Tac-Toe</h1>
+            </section>
+        </header>
+        <main class="main">
+            <div class="switch-btn">
+                <button id="switch" class="up-layer">Play</button>
+                <div class="down-layer"></div>
             </div>
-            <h1 class="title-logo">Tic-Tac-Toe</h1>
-        </section>
-    </header>
-    <main>
-        <div class="switch-btn">
-            <button id="switch" class="up-layer">Play</button>
-            <div class="down-layer"></div>
-        </div>
-        <div class="options-game">
-            <h2>Set names for players</h2>
-            <div id="form">
-                <input class="setName" type="text" placeholder="First player">
-                <input class="setName" type="text" placeholder="Second player">
-                <button id="setBtn">Set</button>
-            </div>
-        </div>
-        <div class="choose-priority">
-            <h2 id="player-choose-priority"></h2>
-            <div class="choose-block">
-                <div class="choose-elem-prio">
-                    
+            <div class="options-container">
+                <div class="options-game">
+                    <h2>Set names for players</h2>
+                    <div id="form">
+                        <input class="setName" type="text" placeholder="First player">
+                        <input class="setName" type="text" placeholder="Second player">
+                        <button id="setBtn">Set</button>
+                    </div>
                 </div>
-                <div class="choose-elem-prio">
-                    
+                <div class="choose-priority">
+                    <h2 id="player-choose-priority"></h2>
+                    <div class="choose-block">
+                        <div class="choose-elem-prio">
+                            
+                        </div>
+                        <div class="choose-elem-prio">
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="choose-symbol">
-            <h2 id="player-choose-symbol"></h2>
-            <div class="choose-block">
-                <div class="choose-elem">
-                    <img src="assets/res/tic.svg" alt="">
+                <div class="choose-symbol">
+                    <h2 id="player-choose-symbol"></h2>
+                    <div class="choose-block">
+                        <div class="choose-elem">
+                            <img src="assets/res/tic.svg" alt="">
+                        </div>
+                        <div class="choose-elem">
+                            <img src="assets/res/tac.svg" alt="">
+                        </div>
+                    </div>
                 </div>
-                <div class="choose-elem">
-                    <img src="assets/res/tac.svg" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="whose-move">
-            <h1 id="whose-move-title"></h1>
-        </div>
-        <div class="gamezone">
-            <div class="hash">
-                <div class="node">
-                    <img class="img-node" src="assets/res/tic.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tac.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tic.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tac.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tic.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tac.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tic.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tac.svg" alt="">
-                </div>
-                <div class="node">
-                    <img class="img-node" src="assets/res/tic.svg" alt="">
+                <div class="whose-move">
+                    <h1 id="whose-move-title"></h1>
                 </div>
             </div>
-        </div>
-        <div class="modal-area">
-            <div class="modal-window">
-                <h2>Game ended</h2>
-                <h1 id="modal-title"></h1>
-                <div class="buttons-continue">
-                    <button id="continue-btn" class="restart">Restart</button>
-                    <button id="continue-btn" class="to-menu">Go to menu</button>
+            <div id="gamezone" class="gamezone">
+                <div class="hash">
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tic.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tac.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tic.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tac.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tic.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tac.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tic.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tac.svg" alt="">
+                    </div>
+                    <div class="node">
+                        <img class="img-node" src="assets/res/tic.svg" alt="">
+                    </div>
                 </div>
             </div>
-            <div class="overlay"></div>
-        </div>
-    </main>
+            <div class="modal-area">
+                <div class="modal-window">
+                    <h2>Game ended</h2>
+                    <h1 id="modal-title"></h1>
+                    <div class="buttons-continue">
+                        <button id="continue-btn" class="restart">Restart</button>
+                        <button id="continue-btn" class="to-menu">Go to menu</button>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+            </div>
+        </main>
     <script src="assets/scripts/main.js" type="module"></script>
 </body>
 </html>

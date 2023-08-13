@@ -6,16 +6,16 @@ export class Game{
         this.hash = hash
     }
 
-    updateHash(hash, index, player){
+    updateHash(index, player){
         let row = Math.floor(index / 3)
         let column = (index - row * 3) % 3
         if(player == 'first')
-            hash[row][column] = 1
-        else hash[row][column] = 2
-        return hash
+            this.hash[row][column] = 1
+        else this.hash[row][column] = 2
+        return this.hash
     }
 
-    isGameFinished(hash, counter, first, second){
+    isGameFinished(counter, first, second){
         let finishConditions = [
             [{i: 0, j: 0}, {i: 0, j: 1}, {i: 0, j: 2}],
             [{i: 1, j: 0}, {i: 1, j: 1}, {i: 1, j: 2}],
@@ -31,9 +31,8 @@ export class Game{
             let combination = [0,0,0]
             for(let k = 0; k < 3; k++)
             {
-                combination[k] = hash[finishConditions[j][k].i][finishConditions[j][k].j]
+                combination[k] = this.hash[finishConditions[j][k].i][finishConditions[j][k].j]
             }
-            console.log(combination)
             if(combination[0] == combination[1] && combination[1] == combination[2] && combination[0] == '1')
             {
                 first.winner = 1    
@@ -50,3 +49,4 @@ export class Game{
         return false
     }
 }
+

@@ -1,8 +1,40 @@
+@media screen and (min-width: 768px) {
+    body{
+        height: 100vh;
+    }
+    
+    #gamezone{
+        max-width: 440px;
+        margin: 0;
+    }
+
+    .options-container{
+        width: 440px;
+    }
+
+    .options-game{
+        justify-content: center;
+        align-items: center;
+    }
+
+    #setBtn{
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .node{
+        height: 145px;
+    }
+}
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 
 body{
     background: #161e2f;
@@ -97,7 +129,6 @@ main{
 
 .gamezone{
     width: 100%;
-    height: 100%;
     padding: 12px 24px;
     display: flex;
     justify-content: center;
@@ -112,7 +143,6 @@ main{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease-in-out;
     gap: 10px;
 }
 
@@ -140,6 +170,11 @@ main{
 
 .node:last-child{
     border-radius: 0px 0px 10px 0px;
+}
+
+.options-container{
+    display: none;
+    width: 100%;
 }
 
 .options-game{
@@ -187,7 +222,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .choose-symbol{
@@ -198,7 +233,7 @@ main{
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .choose-block{
@@ -229,6 +264,9 @@ main{
     align-items: center;
     transition: all 0.3s ease-in-out;
     text-align: center;
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
 }
 
 .choose-elem:hover{

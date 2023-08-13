@@ -19,7 +19,7 @@ let header = document.querySelector('.container-header')
 let logo = document.querySelector('.logo')
 let titleLogo = document.querySelector('.title-logo')
 
-
+let optionsContainer = document.querySelector('.options-container')
 let optionsBlock = document.querySelector('.options-game')
 let setOptionsBtn = document.getElementById("setBtn")
 
@@ -50,25 +50,20 @@ playBtn.addEventListener("click", () => {
     header.style.padding = '8px'
     header.style.gap = '5px'
     titleLogo.style.display = 'none'
-    let gameZone = document.querySelector('.gamezone')
-    let hashZone = document.querySelector('.hash')
-    gameZone.removeChild(hashZone)   
-    let newHashZone = document.createElement('div')
-    newHashZone.classList.add('hash') 
-    gameZone.appendChild(newHashZone)
-    for( let i = 0; i < 9; i++)
-    {
-        let newNode = document.createElement('div')
-        newNode.classList.add('node')
-        newHashZone.appendChild(newNode)
-    }
+    cleanGameZone()
+    optionsContainer.style.display = 'flex'
     optionsBlock.style.display = 'flex'
 })
 
 setOptionsBtn.addEventListener("click", () => {
     for(let i = 0; i < inputNames.length; i++)
     {
-        playerNames[i] = inputNames[i].value
+        if(inputNames[i].value != '')
+            playerNames[i] = inputNames[i].value
+        else
+        {
+            playerNames[i] = 'Player' + (i + 1)
+        }
     }
     optionsBlock.style.display = 'none'
     choosePriority.style.display = 'flex'
@@ -91,7 +86,6 @@ setOptionsBtn.addEventListener("click", () => {
                     else if(i == 1 && playerPriorities[0] == 'second') playerSymbols = ['tic', 'tac']
                     else if(i == 0 && playerPriorities[0] == 'first') playerSymbols = ['tic', 'tac']
                     else if(i == 0 && playerPriorities[0] == 'second') playerSymbols = ['tac', 'tic']
-                    console.log(playerSymbols)
                     chooseBlock.style.display = 'none'
                     firstPlayer = new Player(playerNames[0],playerSymbols[0],playerPriorities[0])
                     secondPlayer = new Player(playerNames[1],playerSymbols[1],playerPriorities[1])
@@ -136,7 +130,7 @@ function startGame(game){
                         ticOrTacDiv.innerHTML = "<img class='img-node' src='assets/res/tac.svg' />"
                         node[i].appendChild(ticOrTacDiv.firstChild)
                     }
-                    hash = game.updateHash(hash, i, 'first')
+                    hash = game.updateHash( i, 'first')
                 }
                 else{
                     whoseMoveTitle.innerHTML = 'Player ' + first.name + ' move' 
@@ -150,11 +144,12 @@ function startGame(game){
                         ticOrTacDiv.innerHTML = "<img class='img-node' src='assets/res/tac.svg' />"
                         node[i].appendChild(ticOrTacDiv.firstChild)
                     }
-                    hash = game.updateHash(hash, i, 'second')
+                    hash = game.updateHash( i, 'second')
                 } 
                 counter++;
-                if(game.isGameFinished(hash, counter, first, second))
-                    gameFinished(first,second)
+                if(counter >= 5)
+                    if(game.isGameFinished(counter, first, second))
+                        gameFinished(first,second)
             }
         })
     }
@@ -167,18 +162,7 @@ function cleanGametoRestart(){
             hash[i][j] = 0;
         }
     }
-    let gameZone = document.querySelector('.gamezone')
-    let hashZone = document.querySelector('.hash')
-    gameZone.removeChild(hashZone)   
-    let newHashZone = document.createElement('div')
-    newHashZone.classList.add('hash') 
-    gameZone.appendChild(newHashZone)
-    for( let i = 0; i < 9; i++)
-    {
-        let newNode = document.createElement('div')
-        newNode.classList.add('node')
-        newHashZone.appendChild(newNode)
-    }
+    cleanGameZone()
 }
 
 function cleanGame(){
@@ -191,6 +175,21 @@ function cleanGame(){
     playerNames = []
     playerSymbols = []
     playerPriorities = []
+}
+
+function cleanGameZone(){
+    let gameZone = document.querySelector('.gamezone')
+    let hashZone = document.querySelector('.hash')
+    gameZone.removeChild(hashZone)   
+    let newHashZone = document.createElement('div')
+    newHashZone.classList.add('hash') 
+    gameZone.appendChild(newHashZone)
+    for( let i = 0; i < 9; i++)
+    {
+        let newNode = document.createElement('div')
+        newNode.classList.add('node')
+        newHashZone.appendChild(newNode)
+    }
 }
 
 function gameFinished(first,second){
